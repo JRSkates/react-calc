@@ -1,7 +1,7 @@
 import React from "react";
 
-function Button() {
-  return <button value="VALUE_HERE">BUTTON_VALUE_HERE</button>;
+function Button({value, className}) {
+  return <button className={className} value={value}>{value}</button>;
 }
 
 export default Button;

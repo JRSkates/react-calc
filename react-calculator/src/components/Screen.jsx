@@ -1,9 +1,9 @@
 import React from "react";
 
-const Screen = () => {
+const Screen = (props) => {
   return (
     <h1 className="screen" aria-label="output">
-      SCREEN_VALUE_HERE
+      {props.value}
     </h1>
   );
 };

@@ -36,7 +36,15 @@ function App() {
     <>
       <div className="wrapper">
         <Screen value={calc.num}/>
-        <div className="buttonBox"></div>;
+        <div className="buttonBox">
+          {btnValues.map((value, index) => (
+            <Button 
+              key={index} 
+              value={value} 
+              className={value === "=" ? "equals" : ""}
+            />
+          ))} 
+        </div>;
       </div>
     </>
   );
