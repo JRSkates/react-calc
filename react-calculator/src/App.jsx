@@ -32,6 +32,28 @@ function App() {
       res: 0
   })
 
+  function numClickHandler (e) {
+    const typedValue = e.target.value
+    setCalc((prevCalc) => {
+      let newNum;
+      if (prevCalc.num === 0 && typedValue === 0) {
+        newNum = 0;  // Don't allow multiple zeros to be entered
+      } else if (prevCalc.num === 0) {
+        newNum = typedValue;  // Start with the typed value if current num is 0
+      } else {
+        newNum = prevCalc.num + typedValue;  // Concatenate the typed value to num
+      }
+
+      const newRes = prevCalc.sign ? prevCalc.sign : 0;
+
+      return {
+        ...prevCalc,
+        num: newNum,
+        res: newRes,
+      };
+    })
+  }
+
   return (
     <>
       <div className="wrapper">
@@ -42,6 +64,7 @@ function App() {
               key={index} 
               value={value} 
               className={value === "=" ? "equals" : ""}
+              onClick={numClickHandler}  // Bind numClickHandler to each button click event
             />
           ))} 
         </div>;
