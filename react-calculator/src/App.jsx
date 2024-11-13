@@ -32,6 +32,18 @@ function App() {
       res: 0
   })
 
+  function signClickHandler (e) {
+    const typedValue = e.target.value
+    setCalc((prevCalc) => {
+      return {
+        ...prevCalc,
+        sign: typedValue,
+        num: 0,
+        res: prevCalc.num,
+      };
+    })
+  }
+
   function numClickHandler (e) {
     const typedValue = e.target.value
     setCalc((prevCalc) => {
@@ -64,7 +76,7 @@ function App() {
               key={index} 
               value={value} 
               className={value === "=" ? "equals" : ""}
-              onClick={numClickHandler}  // Bind numClickHandler to each button click event
+              onClick={["+", "-", "X", "/"].includes(value) ? signClickHandler : numClickHandler} // Bind numClickHandler to each button click event
             />
           ))} 
         </div>;
